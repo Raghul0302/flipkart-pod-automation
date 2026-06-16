@@ -1,25 +1,32 @@
 # Flipkart POD Automation
 
 ## What This Project Does
-Automates the process of downloading invoices from Flipkart VendorHub 
-and uploading them to Google Drive and internal logistics system.
+Automates the complete POD (Proof of Delivery) workflow:
+1. Downloads invoices from Flipkart VendorHub
+2. Uploads them to internal logistics API as images
 
 ## Tech Stack
 - Python
 - Playwright (Browser Automation)
 - Google Sheets API
 - Google Drive API
-- Requests
+- PyMuPDF (PDF to Image conversion)
+- Pillow (Image compression)
+- Requests (REST API)
+
+## Scripts
+- `main.py` → Downloads invoices from Flipkart VendorHub to Google Drive
+- `upload.py` → Downloads from Drive, converts PDF to image, uploads to logistics API
 
 ## Features
-- Auto logs into Flipkart VendorHub
-- Searches invoices across multiple tabs (Paid, Approved, In Process, In Error)
+- Auto searches invoices across multiple tabs on VendorHub
 - Downloads invoice PDFs automatically
-- Uploads to Google Drive
-- Updates Google Sheet status (DONE / NOT FOUND / FAILED)
-- Converts PDF to images and uploads to logistics API
+- Converts PDF pages to compressed images
+- Uploads to Ninjacart logistics backend API
+- Updates Google Sheet status in real time
+- Skips already processed files automatically
 
 ## Impact
-- Reduced manual invoice processing time by 90%
-- Processes hundreds of invoices automatically
+- Reduced manual POD processing time by 90%
+- Handles hundreds of invoices automatically
 - Zero manual intervention needed after setup
